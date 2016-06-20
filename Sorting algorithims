@@ -1,1 +1,65 @@
 
+c=[5,4,6,8,3,1]
+
+def quicksort(n,start,end):
+    if start<end:
+        q=partition(n,start,end)
+        quicksort(n,start,q-1)
+        quicksort(n,1+1,end)
+        
+    
+def partition(n,start,end):
+    x=n[end]
+    i=start-1
+    for j in range(start,end-1):
+        start+=1
+        if n[j]<=x:
+            i=i+1
+            n[i],n[j]=n[j],n[i]
+    n[i+1],n[end]=n[end],n[i+1]
+    return i+1
+
+
+def selectionsort(c):
+    
+    for j in range(len(c)):
+        for i in range(len(c)):
+            if c[i]<c[j]:
+                c[i],c[j]=c[j],c[i]
+    print(c)
+
+
+
+def swap(i, j):                    
+    c[i], c[j] = c[j], c[i] 
+
+def heapify(end,i):   
+    l=2 * i + 1  
+    r=2 * (i + 1)   
+    max=i   
+    if l < end and c[i] < c[l]:   
+        max = l   
+    if r < end and c[max] < c[r]:   
+        max = r   
+    if max != i:   
+        swap(i, max)   
+        heapify(end, max)   
+
+def heap_sort():     
+    end = len(c)   
+    start = end // 2 - 1 
+    for i in range(start, -1, -1):   
+        heapify(end, i)   
+    for i in range(end-1, 0, -1):   
+        swap(i, 0)   
+        heapify(i, 0)
+    print(c)
+
+    
+
+#quicksort(c,1,len(c)-1)
+
+
+#selectionsort(c)
+
+    h
